@@ -74,4 +74,12 @@ class Entry(models.Model):
     text  = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 
-    
+
+
+When changes happen in models
+step 1) Make make Migration 
+step 2) migrate (admin.py)
+
+WILL NEED DBSQLITE
+
+import OS THEN import django
