@@ -14,7 +14,7 @@ for topic in topics:
     print(topic.date_added)  #all from models
 
 
-t = Topic.objects.get(id = 1)
+t = Topic.objects.get(id=1)
 print(t) #prints Chess
 
 entries = t.entry_set.all()

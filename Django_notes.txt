@@ -83,3 +83,89 @@ step 2) migrate (admin.py)
 WILL NEED DBSQLITE
 
 import OS THEN import django
+
+Views.py sets our associated views of each page and handles database
+TWO TYPE OF REQUEST : GET AND Post-- cant seem to remember that one 
+
+
+FOLDERS IN FOLDERS (MainApp --> templates)
+
+TOPICS page
+1) Make entry in urls page
+2) defien topcis funtion in the views file
+3) create topics template topics.html 
+
+IN urls.py
+path('topics',views.topics, name='topics')
+
+IN views.py 
+from .models import Topic
+
+def topics(request):
+    topics = Topic.objects.order_by('date_added')
+    (- sign makes it desc)
+
+    context = {'topics': topics}
+
+key is the variable used in the template file 
+and the value is the variable in the view files
+
+    return render(request, 'MainApp/topics.html', context)
+
+
+template tags - {% %}
+template variables - {{  }}
+
+IN topics.html (which we made)
+
+{% extends "MainApp/base.html" %}
+
+{% block content %}
+
+<p>Topics</p>
+
+<ul>
+    {% for t in topics %}
+
+    <li> {{ t }} </li>
+    {% empty %}
+    <li>No topics have been added yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+
+MAKING INDIVIDUAL TOPIC PAGES
+
+in URLS.py
+path('topics/<int:topic_id>/', views.topic, name='topic')
+
+in VEIWS
+def topic(request, topic_id):
+    topic = Topic.objects.get(id = topic_id)
+
+    entries = topic.entry_set.all()
+
+    context = {'topics': topics, 'entries':entries}
+
+    return render(request, 'MainApp/topic.html', context)
+
+in TOPIC.HTML (which we made)
+
+{% extends "MainApp/base.html" %}
+
+{% block content %}
+
+<p>Topic: {{topic}}</p>
+
+<ul>
+    {% for e in entries %}
+    <li>
+        <p>{{e.text}}</p>
+        <p>{{e.date_added}}</p>
+    </li>
+    {% empty %}
+    <li>There are no entries</li>
+</ul>
+
+{% endblock content %}
