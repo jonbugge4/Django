@@ -14,7 +14,7 @@
     <li>There are no entries</li>
     {% endfor %}
     <p>
-        <a href="{% url MainApp:new_entry' topic.id %}">{{ topic }}</a>
+        <a href="{% url 'MainApp:new_entry' topic.id %}">{{ topic }}</a>
     </p>
 </ul>
 
