@@ -7,12 +7,15 @@
 <ul>
     {% for e in entries %}
     <li>
-        <p>{{e.text}}</p>
-        <p>{{e.date_added}}</p>
+        <p>{{e.text |linebreaks}}</p>
+        <p>{{e.date_added |date:'M d, Y H:i'}}</p>
     </li>
     {% empty %}
     <li>There are no entries</li>
     {% endfor %}
+    <p>
+        <a href="{% url MainApp:new_entry' topic.id %}">{{ topic }}</a>
+    </p>
 </ul>
 
 {% endblock content %}
