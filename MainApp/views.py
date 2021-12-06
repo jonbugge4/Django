@@ -24,12 +24,13 @@ def topic(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
     if topic.owner != request.user:
         raise Http404
-        
+
     entries = topic.entry_set.all()
 
     context = {'topic': topic, 'entries':entries}
 
     return render(request, 'MainApp/topic.html', context)
+
 
 @login_required
 def new_topic(request):
