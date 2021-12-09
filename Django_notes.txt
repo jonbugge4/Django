@@ -171,3 +171,20 @@ in TOPIC.HTML (which we made)
 {% endblock content %}
 
 python3 manage.py runserver
+
+
+RIP: (from base.html)
+<p>
+    <a href="{% url 'MainApp:index' %}">Learning Log </a>
+    <a href="{% url 'MainApp:topics' %}">Topics </a>
+    {% if user.is_authenticated %}
+        Hello, {{ user.username}}.
+    <a href="{% url 'users:logout' %}">Log out</a>
+    {% else %}    
+    <a href="{% url 'users:register' %}">Register</a>
+    <a href="{% url 'users:login' %}">Log in</a>
+    {% endif %}
+</p>
+{% block content %}
+
+{% endblock content %}
