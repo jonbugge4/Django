@@ -169,3 +169,5 @@ in TOPIC.HTML (which we made)
 </ul>
 
 {% endblock content %}
+
+python3 manage.py runserver
