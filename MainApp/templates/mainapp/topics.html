@@ -6,7 +6,7 @@
 
 {% block content %} 
 <ul>
-    {% for t in topics %}
+    {% for topic in topics %}
      <li><h3>
          <a href="{% url 'MainApp:topic' topic.id %}">{{ topic }}</a>
      </h3></li>
